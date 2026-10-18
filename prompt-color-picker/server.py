@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Tiny local server: serves a color picker page and saves the chosen color."""
-import http.server, json, os, re, secrets, subprocess, threading
+import http.server, json, os, re, secrets, shutil, subprocess, threading
 
 COLOR_FILE = os.path.expanduser("~/.config/amnesia-color")
 TOKEN = secrets.token_urlsafe(16)
@@ -76,7 +76,9 @@ class H(http.server.BaseHTTPRequestHandler):
 srv = http.server.HTTPServer(("127.0.0.1", 0), H)
 url = f"http://127.0.0.1:{srv.server_address[1]}/"
 print(f"Color picker at {url}  (Ctrl-C to quit)")
-subprocess.Popen(["open", url])
+opener = shutil.which("open") or shutil.which("xdg-open")
+if opener:
+    subprocess.Popen([opener, url])
 try:
     srv.serve_forever()
 except KeyboardInterrupt:

@@ -39,7 +39,7 @@ approximates them.
 ## Requirements
 
 - zsh + oh-my-zsh
-- Python 3 and macOS `open` (for the color picker)
+- Python 3 and `open` or `xdg-open` (for the color picker)
 
 ## Credits
 
