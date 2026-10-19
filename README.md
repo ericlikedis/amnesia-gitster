@@ -44,3 +44,4 @@ approximates them.
 ## Credits
 
 Based on the `lambda-gitster` theme.
+https://github.com/ergenekonyigit/lambda-gitster
